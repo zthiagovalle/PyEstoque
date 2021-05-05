@@ -1,6 +1,6 @@
 import sqlite3
 import os
-import interfaces.menu
+import interfaces.Menu
 
 exist = False
 if os.path.isfile('./database/db.db'):
@@ -60,4 +60,4 @@ if (exist == False):
 
     con.commit()
 
-interfaces.menu.main()
+interfaces.Menu.main()
