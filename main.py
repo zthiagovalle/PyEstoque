@@ -1,5 +1,15 @@
 import sqlite3
+import os
 
+
+# definir como false se não for colocar registros nas tabelas
+# fornecedor, usuario, categoria e produto
+seed = True
+if os.path.isfile('./db.db'):
+    seed = False
+
+
+    
 con = sqlite3.connect('./db.db')
 con.execute("""
 create table if not exists usuario(
@@ -50,10 +60,6 @@ create table if not exists venda(
     );
     """)
 
-# definir como false se for colocar registros nas tabelas
-# fornecedor, usuario, categoria e produto
-
-seed = True
 
 if(seed):
     con.execute("""
