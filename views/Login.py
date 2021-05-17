@@ -1,4 +1,4 @@
-import utils.ClearPrompt
+import utils.ClearPrompt as prompt
 import sqlite3
 
 
@@ -7,7 +7,7 @@ def main():
 
     op = 0
     while op not in [1, 2, 3]:
-        utils.ClearPrompt.clear()
+        prompt.clear()
         print("\tLogin\n")
         print("Opções:")
         print("1 - Logar")

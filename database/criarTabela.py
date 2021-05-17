@@ -1,8 +1,10 @@
 import os
 import sqlite3
+import utils.ClearPrompt as prompt
 
 
-def criar():
+def create():
+    prompt.clear()
     exist = False
 
     if os.path.isfile('./database/db.db'):
@@ -88,3 +90,9 @@ def criar():
             ('Kibom', 19, 10, '2', 2, 1, 2)""")
 
         con.commit()
+        print("Banco de dados criado com sucesso !")
+        input("tecle entrar para continuar..")
+
+    else:
+        print("O Banco de dados já está criado !")
+        input("tecle entrar para continuar..")

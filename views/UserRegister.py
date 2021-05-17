@@ -1,6 +1,6 @@
-import utils.ClearPrompt
+import utils.ClearPrompt as prompt
 
 def main():
-    utils.ClearPrompt.clear()
+    prompt.clear()
     print("\tTela de Cadastro")
     input("teste")

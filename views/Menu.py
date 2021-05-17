@@ -1,10 +1,10 @@
-import utils.ClearPrompt
+import utils.ClearPrompt as prompt
 import views.Login as login
 import views.UserRegister as register
 
 def main():
     while(True):
-        utils.ClearPrompt.clear()
+        prompt.clear()
         print("\tBem vindo ao PyEstoque")
         print("Opções:")
         print("1 - Entrar no sistema.")
