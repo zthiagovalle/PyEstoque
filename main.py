@@ -1,5 +1,5 @@
-import interfaces.menu
+import views.Menu
 import database.criarTabela as criarTabela
 
 criarTabela.criar()
-interfaces.menu.main()
+views.Menu.main()

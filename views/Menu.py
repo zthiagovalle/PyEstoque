@@ -1,6 +1,6 @@
 import utils.ClearPrompt
-import interfaces.Login
-import interfaces.UserRegister
+import views.Login as login
+import views.UserRegister as register
 
 def main():
     while(True):
@@ -13,9 +13,9 @@ def main():
         op = input("\nInforme a sua opção: ")
 
         if (op == "1"):
-            interfaces.Login.main()
+            login.main()
         elif (op == "2"):
-            interfaces.UserRegister.main()
+            register.main()
         else:
             print("Você informou um opção inválida !")
             input("tecle entrar para continuar..")
