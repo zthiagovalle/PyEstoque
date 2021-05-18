@@ -2,7 +2,6 @@ import os
 import sqlite3
 import utils.ClearPrompt as prompt
 
-
 def create():
     prompt.clear()
     exist = False

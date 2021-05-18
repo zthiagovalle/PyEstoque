@@ -7,8 +7,8 @@ def main():
         prompt.clear()
         print("\tBem vindo ao PyEstoque")
         print("Opções:")
-        print("1 - Entrar no sistema.")
-        print("2 - Criar conta.")
+        print("1 - Entrar no sistema")
+        print("2 - Criar conta")
 
         op = input("\nInforme a sua opção: ")
 
