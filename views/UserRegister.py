@@ -9,11 +9,11 @@ def main():
         print("\tCadastro de Usuário")
         print("Opções:")
         print("1 - Criar conta")
-        print("2 - Voltar")
+        print("9 - Voltar")
 
         op = input("\nInforme a sua opção: ")
 
-        if (op == "2"):
+        if (op == "9"):
             menu.main()
         elif (op == "1"):
             register()
@@ -25,9 +25,9 @@ def register():
     prompt.clear()
     print("\tCadastro de Usuário")
     name = input("\nInforme seu nome completo: ")
-    login = input("\nInforme seu usuario: ")
-    password = input("\nInforme sua senha: ")
-    confirmPassword = input("\nConfirme a sua senha: ")
+    login = input("Informe seu usuario: ")
+    password = input("Informe sua senha: ")
+    confirmPassword = input("Confirme a sua senha: ")
 
     if(validRegister(login, password, confirmPassword)):
         inserts.createUser(name, login, password)
@@ -40,14 +40,12 @@ def register():
         main()
 
 def validRegister(login, password, confirmPassword):
-    print("\n")
- 
     if(consults.existUser(login)):
-        print("Usuário já cadastrado!")
+        print("\nUsuário já cadastrado!")
         return False
     
     if(password != confirmPassword):
-        print("Senhas divergentes!")
+        print("\nSenhas divergentes!")
         return False
 
     return True
