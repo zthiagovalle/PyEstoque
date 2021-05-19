@@ -1,6 +1,7 @@
 import utils.ClearPrompt as prompt
 import views.Menu as menu
 import database.consults as consults
+import database.inserts as inserts
 
 def main():
     while(True):
@@ -28,7 +29,8 @@ def register():
     password = input("\nInforme sua senha: ")
     confirmPassword = input("\nConfirme a sua senha: ")
 
-    if(validRegister(name, login, password, confirmPassword)):
+    if(validRegister(login, password, confirmPassword)):
+        inserts.createUser(name, login, password)
         print("Usuário cadastrado com sucesso !")
         input("tecle entrar para continuar..")
         main()
@@ -37,8 +39,8 @@ def register():
         input("tecle entrar para continuar..")
         main()
 
-def validRegister(name, login, password, confirmPassword):
-    print("\n\n")
+def validRegister(login, password, confirmPassword):
+    print("\n")
  
     if(consults.existUser(login)):
         print("Usuário já cadastrado!")
