@@ -1,5 +1,7 @@
+from os import O_EXLOCK
 import utils.ClearPrompt as prompt
 import database.consults as consults
+import views.AccountConfiguration as account
 
 def main(login):
     while True:
@@ -14,6 +16,9 @@ def main(login):
         print("9 - Sair")
         op = input("\nInforme a sua opção: ")
 
-        print(consults.getIdByLogin(login))
+        if(op == '1'):
+            account.main(login)
+        else:
+            print("Você informou um opção inválida !")
+            input("tecle entrar para continuar..")
 
-        input("tecle entrar para continuar..")
