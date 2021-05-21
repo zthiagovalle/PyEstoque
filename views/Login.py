@@ -1,6 +1,7 @@
 import utils.ClearPrompt as prompt
 import views.Menu as menu
 import database.consults as consults
+import views.Home as home
 
 def main():
     while True:
@@ -27,8 +28,9 @@ def login():
     password = input("Informe sua senha: ")
     
     if(consults.authenticate(login, password)):
-        print("\nLogado com sucesso!")
-        input("tecle entrar para continuar..")
+        print("\nAutenticação concluida!")
+        input("tecle entrar para acessar o menu de usuário..")
+        home.main(login)
     else:
         print("\nConta não localizada.")
         input("tecle entrar para continuar..")

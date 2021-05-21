@@ -21,3 +21,10 @@ def authenticate(login, password):
             return False
     except :
         print(error)
+
+def getIdByLogin(login):
+    con = sqlite3.connect('./database/db.db')
+    try:
+        return con.execute(f'select id from usuario where login="{login}"').fetchone()[0]
+    except :
+        print(error)

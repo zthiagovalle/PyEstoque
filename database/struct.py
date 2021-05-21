@@ -24,15 +24,11 @@ def create():
                 id integer not null primary key autoincrement,
                 nome text not null,
                 telefone text not null,
-                endereco text not null
-            )
-            """)
+                endereco text not null,
+                usuario_id,
 
-        con.execute("""
-        create table if not exists categoria(
-                id integer not null primary key,
-                categoria text not null unique
-            );
+                foreign key(usuario_id) references usuario(id)
+            )
             """)
 
         con.execute("""
@@ -44,49 +40,12 @@ def create():
                 codigo_barras integer,
                 quantidade_estoque integer,
                 fornecedor_id integer,
-                categoria_id integer,
-
-                foreign key(categoria_id) references categoria(id)
+                usuario_id integer,
 
                 foreign key(fornecedor_id) references fornecedor(id)
+                foreign key(usuario_id) references usuario(id)
             );
             """)
-
-        con.execute("""
-        create table if not exists venda(
-                id integer not null primary key,
-                valor_total integer not null,
-                data_venda integer not null
-            );
-            """)
-
-        con.execute("""
-        insert into 
-            categoria 
-            (categoria) 
-        values 
-            ("danone"),("sorvete"),("arroz"),("feijão")""")
-        con.execute("""
-        insert into 
-            fornecedor 
-            (nome,telefone,endereco) 
-        values 
-            ("Fornecedor 1","161111","R Palmares, 423"),
-            ("Fornecedor 2","162222","Av Limao, 7")""")
-        con.execute("""
-        insert into 
-            usuario 
-            (login, nome, senha) 
-        values 
-            ("thiago","Thiago","321"),
-            ("gabriel","Gabriel","123")""")
-        con.execute("""
-        insert into 
-            produto 
-            (nome, valor_venda, valor_compra, codigo_barras, quantidade_estoque, fornecedor_id, categoria_id) 
-        values 
-            ('Yakult', 5, 4.5, '1', 10, 1, 1), 
-            ('Kibom', 19, 10, '2', 2, 1, 2)""")
 
         con.commit()
         print("Banco de dados criado com sucesso !")
