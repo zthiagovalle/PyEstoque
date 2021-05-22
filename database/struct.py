@@ -37,7 +37,6 @@ def create():
                 nome text not null,
                 valor_venda float,
                 valor_compra text,
-                codigo_barras integer,
                 quantidade_estoque integer,
                 fornecedor_id integer,
                 usuario_id integer,

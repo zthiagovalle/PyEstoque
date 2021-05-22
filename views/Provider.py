@@ -2,6 +2,8 @@ import utils.ClearPrompt as prompt
 import views.Home as home
 import database.inserts as inserts
 import database.consults as consults
+import database.deletes as deletes
+import database.updates as updates
 
 def main(login):
     while(True):
@@ -18,7 +20,7 @@ def main(login):
         if (op == "1"):
             register(login)
         elif (op == "2"):
-            print("2")
+            changeProvider(login)
         elif (op == "3"):
             getProviders(login)
         elif (op == "4"):
@@ -68,7 +70,75 @@ def deleteProvider(login):
             print(f"Telefone: {provider[2]}")
             print(f"Endereço: {provider[3]}")
             print("---------------------------------------------")
-        providerId = input("Digite o id do fornecedor que deseja excluir: ")
+
+        try:
+            providerId = int(input("Digite o id do fornecedor que deseja excluir: "))
+        except:
+            print("Você digitou um id invalido")
+            input("tecle entrar para continuar..") 
+            main(login)
+        
+        providerToDelete = consults.getProviderById(providerId, login)
+        if(providerToDelete != []):
+            deletes.deleteProviderById(login, providerId)
+            print("Fornecedor Excluido com sucesso!")
+        else:
+            print("Você digitou um id invalido")
+
+        input("tecle entrar para continuar..") 
+
     else:
         print("Não existe fornecedores cadastrados")
-        input("tecle entrar para continuar..")   
+        input("tecle entrar para continuar..")
+
+def changeProvider(login):
+    prompt.clear()
+    print("\tAlteração de Fornecedores")
+    providers = consults.getProviders(login)
+    if(providers != []):
+        for provider in providers:
+            print("---------------------------------------------")
+            print(f"ID: {provider[0]}")
+            print(f"Nome: {provider[1]}")
+            print(f"Telefone: {provider[2]}")
+            print(f"Endereço: {provider[3]}")
+            print("---------------------------------------------")
+
+        try:
+            providerId = int(input("Digite o id do fornecedor que deseja alterar: "))
+        except:
+            print("Você digitou um id invalido")
+            input("tecle entrar para continuar..") 
+            main(login)
+        
+        providerToChange = consults.getProviderById(providerId, login)
+        if(providerToChange != []):
+            print("\nCaso não deseje alterar o campo digite 0")
+            newName = input("\nNovo nome: ")
+            newPhoneNumber = input("Novo telefone: ")
+            newAddress = input("Novo endereço: ")
+
+            if(newName == '0' and newPhoneNumber == '0' and newAddress == '0'):
+                print("Fornecedor não teve alterações.")
+                input("tecle entrar para continuar..")
+                main(login)
+
+            if(newName == '0'):
+                newName = providerToChange[0][1]
+            
+            if(newPhoneNumber == '0'):
+                newPhoneNumber = providerToChange[0][2]
+
+            if(newAddress == '0'):
+                newPhoneNumber = providerToChange[0][3]
+
+            updates.changeProvider(providerId, newName, newPhoneNumber, newAddress)
+            print("Fornecedor Alterado com sucesso!")
+        else:
+            print("Você digitou um id invalido")
+
+        input("tecle entrar para continuar..") 
+
+    else:
+        print("Não existe fornecedores cadastrados")
+        input("tecle entrar para continuar..")    
