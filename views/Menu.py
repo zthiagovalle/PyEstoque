@@ -13,9 +13,6 @@ def main():
         print("2 - Criar conta")
         print("3 - Sobre o sistema")
         print("9 - Sair")
-
-
-
         op = input("\nInforme a sua opção: ")
 
         if (op == "1"):

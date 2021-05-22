@@ -8,4 +8,4 @@ def createUser(name, login, password):
         con.execute(f'insert into usuario (nome, login, senha) values ("{name}", "{login}", "{password}")')
         con.commit()
     except:
-        print("error")
+        print(error)
