@@ -25,7 +25,7 @@ def create():
                 nome text not null,
                 telefone text not null,
                 endereco text not null,
-                usuario_id,
+                usuario_id integer,
 
                 foreign key(usuario_id) references usuario(id)
             )

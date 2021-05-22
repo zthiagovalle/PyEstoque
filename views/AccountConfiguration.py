@@ -42,10 +42,11 @@ def changePassword(login):
 
 def deleteAccount(login):
     print("\nCuidado!")
-    confirm = input("Voce confirma a exclusão da conta? digite SIM para confirmar a exclusão.")
+    confirm = input("Voce confirma a exclusão da conta? digite SIM para confirmar a exclusão: ")
 
-    if(confirm.upper == "SIM"):
+    if(confirm == "SIM"):
         deletes.deleteAccount(login)
+        input("Conta excluida! tecle enter para continuar..")
         views.Login.main()
     else:
         main(login)
