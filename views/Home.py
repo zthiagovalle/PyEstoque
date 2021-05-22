@@ -1,6 +1,8 @@
 import utils.ClearPrompt as prompt
 import views.AccountConfiguration as account
 import views.Login
+import views.Product as product
+import views.Provider as provider
 
 def main(login):
     while True:
@@ -17,6 +19,10 @@ def main(login):
 
         if(op == '1'):
             account.main(login)
+        elif(op == '2'):
+            provider.main(login)
+        elif(op == '3'):
+            product.main(login)
         elif(op == '9'):
             views.Login.main()
         else:
