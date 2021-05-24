@@ -80,8 +80,12 @@ def deleteProvider(login):
         
         providerToDelete = consults.getProviderById(providerId, login)
         if(providerToDelete != []):
-            deletes.deleteProviderById(login, providerId)
-            print("Fornecedor Excluido com sucesso!")
+            products = consults.getProductsByProviderId(providerId, login)
+            if(products == []):
+                deletes.deleteProviderById(login, providerId)
+                print("Fornecedor Excluido com sucesso!")
+            else:
+                print("\nExiste produtos cadastrados para esse fornecedor!\nPor favor exclua os produtos antes de excluir o fornecedor.")
         else:
             print("Você digitou um id invalido")
 
