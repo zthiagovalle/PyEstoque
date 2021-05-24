@@ -21,7 +21,7 @@ def main(login):
         elif (op == "2"):
             print("2")
         elif (op == "3"):
-            print("3")
+            getProducts(login)
         elif (op == "4"):
             print("4")
         elif (op == "9"):
@@ -73,3 +73,21 @@ def register(login):
         print("Não existe fornecedores cadastrados, então não é possivel cadastrar um produto.")
         input("tecle entrar para continuar..")
         main(login)
+
+def getProducts(login):
+    prompt.clear()
+    print("\Produtos Cadastrados")
+    products = consults.getProducts(login)
+    if(products != []):
+        for product in products:
+            print("---------------------------------------------")
+            print(f"Nome do Fornecedor: {product[0]}")
+            print(f"Nome Produto: {product[2]}")
+            print(f"Valor de Venda R${product[3]}")
+            print(f"Valor de Compra R${product[4]}")
+            print(f"Quantidade em estoque: {product[5]}")
+            print("---------------------------------------------")
+        input("tecle entrar para continuar..")
+    else:
+        print("Não existe fornecedores cadastrados")
+        input("tecle entrar para continuar..")
