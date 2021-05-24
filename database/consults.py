@@ -48,6 +48,15 @@ def getProviderById(id, login):
     except :
         print(error)
 
+def getProductById(id, login):
+    user_id = getIdByLogin(login)
+    user_id_int = int(user_id)
+    con = sqlite3.connect('./database/db.db')
+    try:
+        return con.execute(f'select * from produto where id={id} and usuario_id={user_id_int}').fetchall()
+    except :
+        print(error)
+
 def getProductsByProviderId(provider_id, login):
     user_id = getIdByLogin(login)
     user_id_int = int(user_id)
