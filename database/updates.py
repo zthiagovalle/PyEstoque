@@ -17,3 +17,11 @@ def changeProvider(id, newName, newPhoneNumber, newAddress):
         con.commit()
     except:
         print(error)
+
+def changeProduct(id, newName, newPurchasePrice, newSalePrice):
+    con = sqlite3.connect('./database/db.db')
+    try:
+        con.execute(f'update produto set nome= "{newName}", valor_venda="{newSalePrice}", valor_compra="{newPurchasePrice}" where id = {id}')
+        con.commit()
+    except:
+        print(error)
