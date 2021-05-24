@@ -35,7 +35,7 @@ def create():
         create table if not exists produto(
                 id integer not null primary key,
                 nome text not null,
-                valor_venda float,
+                valor_venda text,
                 valor_compra text,
                 quantidade_estoque integer,
                 fornecedor_id integer,
