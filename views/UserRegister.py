@@ -33,7 +33,7 @@ def register():
         inserts.createUser(name, login, password)
         print("Usuário cadastrado com sucesso !")
         input("tecle entrar para continuar..")
-        main()
+        menu.main()  
     else:
         print("Erro para realizar cadastrado !")
         input("tecle entrar para continuar..")
