@@ -27,7 +27,7 @@ def main(login):
         elif (op == "4"):
             deleteProduct(login)
         elif (op == "5"):
-            print("5")
+            controlProduct(login)
         elif (op == "9"):
             home.main(login)
         else:
@@ -174,7 +174,7 @@ def changeProduct(login):
             if(newPurchasePrice == '0'):
                 newPurchasePrice = productToChange[0][3]
 
-            updates.changeProduct(productId, newName, newPurchasePrice, newSalePrice)
+            updates.changeProduct(productId, newName, newPurchasePrice, newSalePrice, productToChange[0][5])
             print("Produto Alterado com sucesso!")
         else:
             print("Você digitou um id invalido")
@@ -183,4 +183,58 @@ def changeProduct(login):
 
     else:
         print("Não existe Produtos cadastrados")
-        input("tecle entrar para continuar..")    
+        input("tecle entrar para continuar..")
+    
+
+def controlProduct(login):
+    prompt.clear()
+    print("\tControle do Estoque de produtos")
+    products = consults.getProducts(login)
+    if(products != []):
+        for product in products:
+            print("---------------------------------------------")
+            print(f"Nome do Fornecedor: {product[0]}")
+            print(f"Id do Produto: {product[1]}")
+            print(f"Nome Produto: {product[2]}")
+            print(f"Valor de Venda R${product[3]}")
+            print(f"Valor de Compra R${product[4]}")
+            print(f"Quantidade em estoque: {product[5]}")
+            print("---------------------------------------------")
+
+        try:
+            productId = int(input("Digite o id do produto que deseja alterar o estoque: "))
+        except:
+            print("Você digitou um id invalido")
+            input("tecle entrar para continuar..") 
+            main(login)
+        
+        productToChange = consults.getProductById(productId, login)
+        if(productToChange != []):
+            print("\nDigite um número inteiro positivo para somar a quantidade de estoque do produto.\nDigite um número inteiro negativo para subtrair a quantidade de estoque do produto.")
+            try:
+                quantity = int(input("Digite: "))
+                if(quantity > 0):
+                    stokQuantity = productToChange[0][4] + quantity
+                else:
+                    if(quantity + productToChange[0][4] < 0):
+                        print("Você quer tirar mais do que o produto tem.")
+                        input("tecle entrar para continuar..") 
+                        main(login)
+                    else:
+                        stokQuantity = productToChange[0][4] + quantity
+
+                updates.changeProduct(productId, productToChange[0][1], productToChange[0][3], productToChange[0][2], stokQuantity)
+                
+                print("Estoque atualizado com sucesso!")
+            except:
+                print("Você digitou um número invalido")
+                input("tecle entrar para continuar..") 
+                main(login)
+        else:
+            print("Você digitou um id invalido")
+
+        input("tecle entrar para continuar..") 
+
+    else:
+        print("Não existe produtos cadastrados")
+        input("tecle entrar para continuar..")
