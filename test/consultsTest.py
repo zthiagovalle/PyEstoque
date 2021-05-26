@@ -1,4 +1,5 @@
 import sqlite3
+import json
 
 def getAllUsers():
     con = sqlite3.connect('../database/db.db')
@@ -29,8 +30,28 @@ def getProducts(user_id_int):
     except :
         print("Erro")
 
+def getJson():
+    con = sqlite3.connect('../database/db.db')
+    list = con.execute(f'select * from produto where usuario_id=1').fetchall()
+    print(list)
+    input("Tecle enter")
+    dic = getProduct(list)
+    print(dic)
+    input("Tecle enter")
+    file = open("../export/Produtos.json", "w")
+    json.dump(dic, file, indent=4)
+    file.close()
+
+def getProduct(productList):
+    lstProductDic = []
+    for product in productList:
+        productDic = {'id':product[0], 'nome':product[1], 'valor_venda':product[2], 'valor_compra':product[3], 'quantidade_estoque':product[4], 'fornecedor_id':product[5], 'usuario_id':product[6]}
+        lstProductDic.append(productDic)
+    return lstProductDic
+
 # getAllUsers()
 # getAllProviders()
 #getAllProducts()
 #getProductsByProviderId(1, 1)
-getProducts(1)
+#getProducts(1)
+getJson()

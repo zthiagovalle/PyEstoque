@@ -1,0 +1,20 @@
+[
+    {
+        "id": 1,
+        "nome": "batata",
+        "valor_venda": "20",
+        "valor_compra": "10",
+        "quantidade_estoque": 0,
+        "fornecedor_id": 1,
+        "usuario_id": 1
+    },
+    {
+        "id": 2,
+        "nome": "p\u00e3o de alho",
+        "valor_venda": "20",
+        "valor_compra": "15",
+        "quantidade_estoque": 1,
+        "fornecedor_id": 1,
+        "usuario_id": 1
+    }
+]
