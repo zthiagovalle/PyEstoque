@@ -1,0 +1,9 @@
+[
+    {
+        "id": 1,
+        "nome": "Fornecedor X",
+        "telefone": "xx-xx",
+        "endereco": "Rua X",
+        "usuario_id": 1
+    }
+]

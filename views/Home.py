@@ -3,6 +3,7 @@ import views.AccountConfiguration as account
 import views.Login
 import views.Product as product
 import views.Provider as provider
+import views.Export as export
 
 def main(login):
     while True:
@@ -23,6 +24,8 @@ def main(login):
             provider.main(login)
         elif(op == '3'):
             product.main(login)
+        elif (op == '4'):
+            export.main(login)
         elif(op == '9'):
             views.Login.main()
         else:
