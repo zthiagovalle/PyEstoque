@@ -1,5 +1,9 @@
 import sqlite3
 import json
+import os
+import zipfile as zip
+import shutil
+
 
 def getAllUsers():
     con = sqlite3.connect('../database/db.db')
@@ -49,9 +53,23 @@ def getProduct(productList):
         lstProductDic.append(productDic)
     return lstProductDic
 
+def compress(): 
+    path_zip = os.path.join(os.sep,  os.getcwd().replace("test", "export"), "export.zip")
+    path_dir = os.path.join(os.sep, os.getcwd().replace("test", ''), "export")
+
+    zf = zip.ZipFile(path_zip, "w")
+    for dirname, subdirs, files in os.walk(path_dir):
+        for filename in files:
+            if(filename.endswith('.json')):
+                zf.write(os.path.join(dirname, filename))
+    zf.close()
+
+
+
 # getAllUsers()
 # getAllProviders()
 #getAllProducts()
 #getProductsByProviderId(1, 1)
 #getProducts(1)
 #getJson()
+#compress()
