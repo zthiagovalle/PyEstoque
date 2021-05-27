@@ -1,0 +1,8 @@
+[
+    {
+        "nome": "produto1",
+        "valor_venda": "20",
+        "valor_compra": "10",
+        "fornecedor_id": 1
+    }
+]

@@ -1,0 +1,17 @@
+[
+    {
+        "nome": "teste por json1",
+        "telefone": "123-123",
+        "endereco": "json"
+    },
+    {
+        "nome": "teste por json2",
+        "telefone": "teste2",
+        "endereco": "teste2"
+    },    
+    {
+        "nome": "teste por json3",
+        "telefone": "teste3",
+        "endereco": "teste3"
+    }
+]

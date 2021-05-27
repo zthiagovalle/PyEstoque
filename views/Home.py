@@ -4,6 +4,7 @@ import views.Login
 import views.Product as product
 import views.Provider as provider
 import views.Export as export
+import views.Import as importJson
 
 def main(login):
     while True:
@@ -26,6 +27,8 @@ def main(login):
             product.main(login)
         elif (op == '4'):
             export.main(login)
+        elif (op == '5'):
+            importJson.main(login)
         elif(op == '9'):
             views.Login.main()
         else:

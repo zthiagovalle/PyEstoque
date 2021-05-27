@@ -2,7 +2,6 @@ import sqlite3
 import json
 import os
 import zipfile as zip
-import shutil
 
 
 def getAllUsers():
@@ -64,7 +63,32 @@ def compress():
                 zf.write(os.path.join(dirname, filename))
     zf.close()
 
+def readJson():
+    datatotalProducts = []
+    path_dir = os.path.join(os.sep, os.getcwd().replace("test", ''), "import")
+    for dirname, subdirs, files in os.walk(path_dir):
+        for filename in files:
+            if(filename.endswith('Produtos.json')):
+                with open(os.path.join(dirname, filename), 'r', encoding='utf8') as f:
+                    data = json.load(f)
+                    datatotalProducts.append(data)
 
+    for data in datatotalProducts:
+        print(data)
+
+    datatotalProviders = []
+    path_dir = os.path.join(os.sep, os.getcwd().replace("test", ''), "import")
+    for dirname, subdirs, files in os.walk(path_dir):
+        for filename in files:
+            if(filename.endswith('Fornecedores.json')):
+                with open(os.path.join(dirname, filename), 'r', encoding='utf8') as f:
+                    data = json.load(f)
+                    datatotalProviders.append(data)
+
+    for data in datatotalProviders:
+        print(data)
+
+    input("tecle enter")
 
 # getAllUsers()
 # getAllProviders()
@@ -73,3 +97,4 @@ def compress():
 #getProducts(1)
 #getJson()
 #compress()
+#readJson()
