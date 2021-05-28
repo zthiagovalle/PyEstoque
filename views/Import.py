@@ -1,6 +1,7 @@
 import views.Home as home
 import utils.ClearPrompt as prompt
 import database.inserts as inserts
+import database.consults as consults
 import json
 import os
 
@@ -50,6 +51,22 @@ def importJson(login):
         for filename in files:
             if(filename.endswith('Produtos.json')):
                 with open(os.path.join(dirname, filename), 'r', encoding='utf8') as f:
-                    data = json.load(f)
+                    try:
+                        data = json.load(f)
+                        if(data != []):
+                            for product in data:
+                                name = product['nome']
+                                salePrice = product['valor_venda']
+                                purchasePrice = product['valor_compra']
+                                providerId = product['fornecedor_id']
+                                if(consults.getProviderById(providerId, login) != []):
+                                    if(inserts.createProduct(login, providerId, name, purchasePrice, salePrice)):
+                                        print("Produto cadastrado com sucesso.")
+                                    else:
+                                        print("Falha ao cadastrar produto.")
+                                else:
+                                    print("Falha ao cadastrar produto. Fornecedor não existe.")
+                    except:
+                        print("Ocorreu erro na leitura do json")
                
     input("tecle entrar para continuar..")

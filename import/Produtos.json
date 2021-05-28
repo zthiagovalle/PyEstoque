@@ -1,8 +1,20 @@
 [
     {
         "nome": "produto1",
+        "valor_venda": "10",
+        "valor_compra": "5",
+        "fornecedor_id": 1
+    },
+    {
+        "nome": "produto2",
         "valor_venda": "20",
         "valor_compra": "10",
-        "fornecedor_id": 1
+        "fornecedor_id": 2
+    },
+    {
+        "nome": "produto3",
+        "valor_venda": "30",
+        "valor_compra": "15",
+        "fornecedor_id": 99
     }
 ]
